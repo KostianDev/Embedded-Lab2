@@ -205,7 +205,13 @@ void SysTick_Handler(void)
 void EXTI0_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI0_IRQn 0 */
-
+  static uint32_t last_btn_tick = 0;
+  uint32_t now = HAL_GetTick();
+  if ((now - last_btn_tick) >= 150)
+  {
+    Btn_Pressed();
+    last_btn_tick = now;
+  }
   /* USER CODE END EXTI0_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(BTN_COLOR_Pin);
   /* USER CODE BEGIN EXTI0_IRQn 1 */

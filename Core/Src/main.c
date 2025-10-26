@@ -44,6 +44,8 @@
 
 /* USER CODE BEGIN PV */
 
+static unsigned int ledN = 0;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -151,6 +153,15 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+void Btn_Pressed()
+{
+
+  ledN++;
+
+  if (ledN > 3)
+    ledN = 0;
+}
 
 /* USER CODE END 4 */
 
